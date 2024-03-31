@@ -2,7 +2,7 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 # Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 ## Step 1: Start the Metro Server
 
@@ -63,6 +63,18 @@ You've successfully run and modified your React Native App. :partying_face:
 
 - If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
 - If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+
+# TheMovieDB
+
+1. After clone repository and install dependencies
+
+   ```properties
+   yarn install
+   ```
+
+2. Copy `.env.template` to `.env`
+3. Copy your API Key from your settings account [themoviedb](https://www.themoviedb.org/settings/api) and paste into your environment variable `THE_MOVIE_DB_KEY` in `.env`
+4. Then start the project
 
 # Troubleshooting
 
