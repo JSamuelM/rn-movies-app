@@ -5,9 +5,11 @@ import { useMovies } from '../../hooks/useMovies'
 import { PosterCarousel } from '../../components/movies/PosterCarousel';
 import { HorizontalCarousel } from '../../components/movies/HorizontalCarousel';
 import { FullScreenLoader } from '../../components/loaders/FullScreenLoader';
+import { Button, useTheme } from 'react-native-paper';
 
 export const HomeScreen = () => {
 
+  const theme = useTheme();
   const { top } = useSafeAreaInsets();
 
   const { isLoading, nowPlaying, popular, topRated, upcoming, popularNextPage } = useMovies();
@@ -17,7 +19,7 @@ export const HomeScreen = () => {
   }
 
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: theme.colors.background }}>
       <View style={{ marginTop: top + 20, paddingBottom: 30 }}>
         {/* Principal */}
         <PosterCarousel movies={ nowPlaying } />
