@@ -1,6 +1,6 @@
-import { Image, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
-import { FullMovie } from '../../../core/entities/movie.entity';
-import { useNavigation } from '@react-navigation/native';
+import { ImageBackground, StyleSheet, View, useWindowDimensions } from 'react-native';
+import { useNavigation, useTheme } from '@react-navigation/native';
+import { IconButton, Text } from 'react-native-paper';
 
 interface Props {
   // movie: FullMovie;
@@ -13,10 +13,11 @@ export const MovieHeader = ({ poster, originalTitle, title }: Props) => {
 
   const { height: screenHeight } = useWindowDimensions();
   const navigation = useNavigation();
+  const theme = useTheme();
 
   return (
     <>
-      <View style={{ ...styles.imageContainer, height: screenHeight * 0.7 }}>
+      {/* <View style={{ ...styles.imageContainer, height: screenHeight * 0.7 }}>
         <View style={ styles.imageBorder }>
           <Image
             style={ styles.posterImage }
@@ -34,6 +35,32 @@ export const MovieHeader = ({ poster, originalTitle, title }: Props) => {
             <Text style={ styles.backButtonText }>Regresar</Text>
           </Pressable>
         </View>
+      </View> */}
+      <View style={{ ...styles.imageContainer, height: screenHeight * 0.5 }}>
+        <ImageBackground
+          style={ styles.posterImage }
+          source={{ uri: poster }}
+        >
+          <View style={{ ...styles.titleContainer, backgroundColor: theme.colors.border }}>
+            <View style={ styles.titleInfo }>
+              <Text style={{ ...styles.title, color: theme.colors.text }}>
+              { title }
+            </Text>
+            <Text style={{ ...styles.subTitle, color: theme.colors.text }}>
+              { originalTitle }
+            </Text>
+            </View>
+          </View>
+        </ImageBackground>
+
+        <View style={ styles.backButton }>
+          <IconButton
+            icon='arrow-back-outline'
+            iconColor={ theme.colors.text }
+            size={ 20 }
+            onPress={ () => navigation.goBack() }
+          />
+        </View>
       </View>
     </>
   )
@@ -43,32 +70,21 @@ export const MovieHeader = ({ poster, originalTitle, title }: Props) => {
 const styles = StyleSheet.create({
   imageContainer: {
     width: '100%',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    shadowOpacity: 0.24,
-    shadowRadius: 7,
-
-    elevation: 9,
-    borderBottomEndRadius: 25,
-    borderBottomStartRadius: 25,
-  },
-
-  imageBorder: {
-    flex: 1,
-    overflow: 'hidden',
-    borderBottomEndRadius: 25,
-    borderBottomStartRadius: 25,
   },
   posterImage: {
     flex: 1,
+    objectFit: 'cover'
   },
-
-  marginContainer: {
-    marginHorizontal: 20,
-    marginTop: 20,
+  titleContainer: {
+    borderTopStartRadius: 15,
+    borderTopEndRadius: 15,
+    position: 'absolute',
+    bottom: 0,
+    width: '100%'
+  },
+  titleInfo: {
+    marginVertical: 10,
+    paddingHorizontal: 20
   },
   subTitle: {
     fontSize: 16,
@@ -80,17 +96,7 @@ const styles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-    zIndex: 999,
-    elevation: 9,
-    top: 35,
+    top: 10,
     left: 10,
-  },
-  backButtonText: {
-    color: 'white',
-    fontSize: 25,
-    fontWeight: 'bold',
-    textShadowColor: 'rgba(0, 0, 0, 0.55)',
-    textShadowOffset: {width: -1, height: 1},
-    textShadowRadius: 10,
-  },
+  }
 });

@@ -28,7 +28,7 @@ export const DetailsScreen = ({ route }: Props) => {
       />
 
       {/* Details */}
-      <MovieDetails movie={ movie! } cast={ cast! } />
+      {/* <MovieDetails movie={ movie! } cast={ cast! } /> */}
     </ScrollView>
   )
 }

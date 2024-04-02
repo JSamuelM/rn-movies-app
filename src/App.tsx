@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Navigation } from './presentation/navigation/Navigation';
 import { LightScheme } from './theme/light-theme';
 import { DarkScheme } from './theme/dark-theme';
+import { IonIcon } from './presentation/components/shared/IonIcon';
 
 const lightTheme = {
   ...MD3LightTheme,
@@ -23,7 +24,7 @@ export const App = () => {
   const theme = colorScheme === 'dark' ? darkTheme : lightTheme;
 
   return (
-    <PaperProvider theme={ theme }>
+    <PaperProvider theme={ theme } settings={{ icon: props => <IonIcon { ...props } /> }}>
       <NavigationContainer>
         <Navigation />
       </NavigationContainer>
