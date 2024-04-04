@@ -1,13 +1,15 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { HomeScreen } from '../screens/home/HomeScreen';
 import { DetailsScreen } from '../screens/details/DetailsScreen';
 import { MaterialBottomTabs } from './MaterialBottomTabs';
 import { useTheme } from 'react-native-paper';
+import { DiscoverByGenreScreen } from '../screens/discover/DiscoverByGenreScreen';
+import type { Genre } from '../../infrastructure/interfaces/movie-db.responses';
 
 export type RootStackParams = {
   Root: undefined;
   Home: undefined;
   Details: { movieId: number };
+  DiscoverByGenre: { genre: Genre };
 }
 
 const Stack = createStackNavigator<RootStackParams>();
@@ -43,6 +45,11 @@ export const Navigation = () => {
         options={{
           headerShown: false
         }}
+      />
+      <Stack.Screen
+        name="DiscoverByGenre"
+        component={ DiscoverByGenreScreen }
+        options={({ route }) => ({ title: route.params.genre.name })}
       />
       
     </Stack.Navigator>

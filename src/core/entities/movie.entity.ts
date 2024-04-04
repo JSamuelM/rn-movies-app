@@ -1,3 +1,4 @@
+import type { Genre } from '../../infrastructure/interfaces/movie-db.responses';
 export interface Movie {
   id: number;
   title: string;
@@ -9,7 +10,7 @@ export interface Movie {
 }
 
 export interface FullMovie extends Movie {
-  genres: string[];
+  genres: Genre[];
   duration: number;
   budget: number;
   originalTitle: string;

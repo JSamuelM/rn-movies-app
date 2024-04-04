@@ -8,3 +8,11 @@ export const movieDBFetcher = new AxiosAdapter({
     language: 'es'
   }
 });
+
+export const discoverDBFetcher = new AxiosAdapter({
+  baseUrl: 'https://api.themoviedb.org/3/discover',
+  params: {
+    api_key: THE_MOVIE_DB_KEY,
+    language: 'es'
+  }
+});

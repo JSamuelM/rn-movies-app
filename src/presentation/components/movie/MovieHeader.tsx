@@ -1,6 +1,6 @@
 import { ImageBackground, StyleSheet, View, useWindowDimensions } from 'react-native';
-import { useNavigation, useTheme } from '@react-navigation/native';
-import { IconButton, Text } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
+import { IconButton, Text, useTheme } from 'react-native-paper';
 
 interface Props {
   // movie: FullMovie;
@@ -17,36 +17,17 @@ export const MovieHeader = ({ poster, originalTitle, title }: Props) => {
 
   return (
     <>
-      {/* <View style={{ ...styles.imageContainer, height: screenHeight * 0.7 }}>
-        <View style={ styles.imageBorder }>
-          <Image
-            style={ styles.posterImage }
-            source={{ uri: poster }}
-          />
-        </View>
-
-        <View style={ styles.marginContainer }>
-          <Text style={ styles.subTitle }>{ originalTitle }</Text>
-          <Text style={ styles.title }>{ title }</Text>
-        </View>
-
-        <View style={ styles.backButton }>
-          <Pressable onPress={ () => navigation.goBack() }>
-            <Text style={ styles.backButtonText }>Regresar</Text>
-          </Pressable>
-        </View>
-      </View> */}
       <View style={{ ...styles.imageContainer, height: screenHeight * 0.5 }}>
         <ImageBackground
           style={ styles.posterImage }
           source={{ uri: poster }}
         >
-          <View style={{ ...styles.titleContainer, backgroundColor: theme.colors.border }}>
+          <View style={{ ...styles.titleContainer, backgroundColor: theme.colors.background }}>
             <View style={ styles.titleInfo }>
-              <Text style={{ ...styles.title, color: theme.colors.text }}>
+              <Text style={{ ...styles.title, color: theme.colors.primary }}>
               { title }
             </Text>
-            <Text style={{ ...styles.subTitle, color: theme.colors.text }}>
+            <Text style={{ ...styles.subTitle, color: theme.colors.primary }}>
               { originalTitle }
             </Text>
             </View>
@@ -56,7 +37,7 @@ export const MovieHeader = ({ poster, originalTitle, title }: Props) => {
         <View style={ styles.backButton }>
           <IconButton
             icon='arrow-back-outline'
-            iconColor={ theme.colors.text }
+            iconColor={ theme.colors.background }
             size={ 20 }
             onPress={ () => navigation.goBack() }
           />
@@ -83,7 +64,7 @@ const styles = StyleSheet.create({
     width: '100%'
   },
   titleInfo: {
-    marginVertical: 10,
+    marginVertical: 20,
     paddingHorizontal: 20
   },
   subTitle: {
